@@ -1,23 +1,14 @@
-var syntax = esprima.parse("5 + 5 # 10");
+function operator_sharp (x, y) {
+    return x + 2 * y;
+}
 
-visitor(syntax,function(el){
-    if(el.type === "BinaryExpression"){
-
-        if(el.operator === "#"){
-            el.type = "CallExpression";
-            el.callee = {
-                name:"operator_sharp",
-                type:"Identifier"
-            };
-            el.arguments = [el.left, el.right];
-            delete el.operator;
-            delete el.left;
-            delete el.right;
-        }
+var operators = {
+    available: ["#"],
+    "#": {
+        name: "operator_sharp",
     }
-});
+};
 
-scriptToEvaluate = escodegen.generate(syntax)
 
 function visitor(tree,visit){
     for(i in tree){
@@ -26,4 +17,27 @@ function visitor(tree,visit){
             visitor(tree[i],visit);
         }
     }
+}
+
+function evalThis (input) {
+    var syntax = esprima.parse(input);
+    visitor(syntax,function(el){
+        if(el.type === "BinaryExpression"){
+
+            if (operators.available.indexOf(el.operator) !== -1){
+                el.type = "CallExpression";
+                el.callee = {
+                    name: operators[el.operator].name,
+                    type:"Identifier"
+                };
+                el.arguments = [el.left, el.right];
+                delete el.operator;
+                delete el.left;
+                delete el.right;
+            }
+        }
+    });
+
+    scriptToEvaluate = escodegen.generate(syntax)
+    return eval(scriptToEvaluate);
 }
