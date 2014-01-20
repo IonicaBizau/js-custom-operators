@@ -1,4 +1,4 @@
 JavaScript Custom Operators
 ===========================
 
-Create your own operators in JavaScript.
+Create your own operators in JavaScript
