@@ -7,6 +7,7 @@
         <script src="./js/escodegen.browser.js"></script>
         
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
 
         <link rel="stylesheet" href="./code-mirror/codemirror.css">
         <link rel="stylesheet" href="./code-mirror/addon/hint/show-hint.css">
@@ -74,22 +75,28 @@
  * How to add a new operator?
  * ----------------------------------------------------------
  * Choose a  character that can be  converted  in an operator
- * (e.g. '#') add it as key in `operators` object below.  The
+ * (e.g. '⋂') add it as key in `operators` object below.  The
  * value  must  be  an  object  containing  `name`  key  that
  * indicates  what  function  is  called.  Then  declare your
  * function  indicated in `name` key.
  * 
- * Below you have an example about how to create `#` operator.
+ * Below you have an example about how to create `⋂` operator.
  * */
 operators = {
-    "#": {
-        name: "operator_sharp",
+    "⋂": {
+        name: "Intersection",
     }
 };
 
-operator_sharp = function (x, y) {
-    return x + 2 * y;
-}</textarea>
+Intersection = function (x, y) {
+    var c = [];
+    for (var i in x) {
+        if (y.indexOf(x[i]) !== -1) {
+            c.push(x[i]);
+        }
+    }
+    return c;
+};</textarea>
         
         <h2>Run your JavaScript code containing your operators</h2>
         <textarea class="js-code" data-highlight="none">
@@ -101,12 +108,7 @@ operator_sharp = function (x, y) {
  * See the example below.
  * */
 
-var x = 10
-  , y = 15;
-
-// 10 + 2 * 5 --> 40
-x # y;
-</textarea>
+[1, 2, 3, 4] ⋂ [3, 4, 5]</textarea>
 
         <button class="run">Run</button>
         
@@ -117,6 +119,5 @@ x # y;
  * */
 </textarea>
         
-        <script src="./js/functions.js"></script>
-    </body>
-</html>
+    <script src="./js/functions.js"></script>
+</body>
