@@ -77,7 +77,7 @@ function runCode () {
         result = e.toString()
     }
 
-    console.log(result || "");
+    console.log(result);
 }
 
 $runButton.on("click", runCode);
