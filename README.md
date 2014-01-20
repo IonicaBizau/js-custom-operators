@@ -3,6 +3,8 @@ JavaScript Custom Operators
 
 Create your own operators in JavaScript
 
+> ![](http://i.imgur.com/15IaZnT.png)
+
 ## Introduction
 
 During the Math classes we learned how to define new operators. For example:
