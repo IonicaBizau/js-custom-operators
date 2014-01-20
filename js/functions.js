@@ -76,7 +76,7 @@ function evalThis (input) {
     visitor(syntax,function(el){
         if(el.type === "BinaryExpression"){
 
-            if (operators.available.indexOf(el.operator) !== -1){
+            if (Object.keys(operators).indexOf(el.operator) !== -1){
                 el.type = "CallExpression";
                 el.callee = {
                     name: operators[el.operator].name,

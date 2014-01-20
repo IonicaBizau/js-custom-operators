@@ -74,16 +74,14 @@
  * How to add a new operator?
  * ----------------------------------------------------------
  * Choose a  character that can be  converted  in an operator
- * (e.g. '#', '|') and  add it in  operators.available  array
- * and as key in operators object below. The value must be an
- * object containing `name` key that indicates what  function
- * is called. Then declare your function  indicated in `name`
- * key.
+ * (e.g. '#') add it as key in `operators` object below.  The
+ * value  must  be  an  object  containing  `name`  key  that
+ * indicates  what  function  is  called.  Then  declare your
+ * function  indicated in `name` key.
  * 
  * Below you have an example about how to create `#` operator.
  * */
 operators = {
-    available: ["#"],
     "#": {
         name: "operator_sharp",
     }
@@ -106,7 +104,8 @@ operator_sharp = function (x, y) {
 var x = 10
   , y = 15;
 
-x # y; // 10 + 2 * 5 --> 40
+// 10 + 2 * 5 --> 40
+x # y;
 </textarea>
 
         <button class="run">Run</button>
