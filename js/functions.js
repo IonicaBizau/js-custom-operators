@@ -27,7 +27,7 @@ var $definedOperators = $(".defined-operators")
  *
  * */
 console.log = function () {
-    var outputLine = "\n[log] ";
+    var outputLine = "\n";
     for (var arg in arguments) {
         var cArg = arguments[arg];
         if (!cArg || typeof cArg === "number") {
