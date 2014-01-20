@@ -3,6 +3,8 @@ JavaScript Custom Operators
 
 Create your own operators in JavaScript
 
+> ![](http://i.imgur.com/15IaZnT.png)
+
 ## Introduction
 
 During the Math classes we learned how to define new operators. For example:
@@ -14,6 +16,9 @@ This defines `∘` law. For any real numbers *x* and *y*, *x ∘ y* is *x + 2y*.
 ## Custom operators in JavaScript?
 
 This projects finally bring this feature in the JavaScript world! :-) Using [**esprima**](http://esprima.org/) - which takes JS code and generates the syntax tree for it - and [**escodegen**](https://github.com/Constellation/escodegen) - which does the other direction, generating JS code from the syntax tree esprima spits - we can create new JavaScript operators.
+
+## Live demo
+You can try this application online [clicking here](http://ionicabizau.github.io/JavaScript-custom-operators/).
 
 ## Thanks!
  - [@benjamingr](https://github.com/benjamingr) posted this great [answer](http://stackoverflow.com/a/20764137/1420197) to my [question on StackOverflow](http://stackoverflow.com/q/20762338/1420197)
