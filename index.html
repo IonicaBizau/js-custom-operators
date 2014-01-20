@@ -30,17 +30,16 @@
     <body>
         <h2>Define your operators</h2>
         <textarea class="defined-operators">
-function operator_sharp (x, y) {
+operator_sharp = function (x, y) {
     return x + 2 * y;
 }
 
-var operators = {
+operators = {
     available: ["#"],
     "#": {
         name: "operator_sharp",
     }
-};
-        </textarea>
+};</textarea>
         
         <h2>Run your JavaScript code containing your operators</h2>
         <textarea class="js-code">
