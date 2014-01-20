@@ -22,36 +22,97 @@
         <style>
             body {
                 font-family: "Open Sans", cursive, sans-serif;
+                padding: 20px;
             }
             textarea {
                 font-family: monospace;
                 width: 100%;
             }
+
+            .CodeMirror.cm-s-default.CodeMirror-focused {
+                box-shadow: 0 0 20px rgb(146, 146, 146);
+            }
+            .CodeMirror.cm-s-default {
+                box-shadow: 0 0 5px rgb(146, 146, 146);
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -moz-transition: all .2s linear;
+                -o-transition: all .2s linear;
+            }
+
+            h2 {
+                font-weight: lighter;
+                font-size: 21px;
+            }
+
+            button {
+                background: #f8f8f8;
+                border: 1px solid #c6c6c6;
+                display: inline-block;
+                line-height: 28px;
+                padding: 0 50px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                margin-top: 10px;
+                cursor: pointer;
+                outline: 0;
+            }
+
+            button:hover {
+                background: #F3F3F3;
+            }
         </style>
     </head>
     <body>
         <h2>Define your operators</h2>
-        <textarea class="defined-operators">
-operator_sharp = function (x, y) {
-    return x + 2 * y;
-}
-
+        <textarea class="defined-operators" data-highlight="js">
+/*
+ * How to add a new operator?
+ * ----------------------------------------------------------
+ * Choose a  character that can be  converted  in an operator
+ * (e.g. '#', '|') and  add it in  operators.available  array
+ * and as key in operators object below. The value must be an
+ * object containing `name` key that indicates what  function
+ * is called. Then declare your function  indicated in `name`
+ * key.
+ * 
+ * Below you have an example about how to create `#` operator.
+ * */
 operators = {
     available: ["#"],
     "#": {
         name: "operator_sharp",
     }
-};</textarea>
+};
+
+operator_sharp = function (x, y) {
+    return x + 2 * y;
+}</textarea>
         
         <h2>Run your JavaScript code containing your operators</h2>
-        <textarea class="js-code">
-        
-        </textarea>
+        <textarea class="js-code" data-highlight="none">
+/*
+ * This is basically a JavaScript code that will return a value
+ * when it will be run.
+ * 
+ * You can use the operators created by you.
+ * See the example below.
+ * */
+
+var x = 10
+  , y = 15;
+
+x # y; // 10 + 2 * 5 --> 40
+</textarea>
 
         <button class="run">Run</button>
         
         <h2>Output</h2>
-        <textarea class="output"></textarea>
+        <textarea class="output">
+/*
+ * Press the RUN button and you will see here the output.
+ * */
+</textarea>
         
         <script src="functions.js"></script>
     </body>
