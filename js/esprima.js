@@ -74,7 +74,24 @@ parseStatement: true, parseSourceElement: true */
         delegate,
         lookahead,
         state,
-        extra;
+        extra,
+        JohnnysProps = {
+            operators: [
+                '<',
+                '>',
+                '=',
+                '!',
+                '+',
+                '-',
+                '*',
+                '%',
+                '&',
+                '|',
+                '^',
+                '/'
+            ],
+            custom: []
+        };
 
     Token = {
         BooleanLiteral: 1,
@@ -106,7 +123,7 @@ parseStatement: true, parseSourceElement: true */
                     '=', '+=', '-=', '*=', '/=', '%=', '<<=', '>>=', '>>>=',
                     '&=', '|=', '^=', ',',
                     // binary/unary operators
-                    '+', '-', '*', '/', '%','#', '++', '--', '<<', '>>', '>>>', '&',
+                    '+', '-', '*', '/', '%', '++', '--', '<<', '>>', '>>>', '&',
                     '|', '^', '!', '~', '&&', '||', '?', ':', '===', '==', '>=',
                     '<=', '<', '>', '!=', '!=='];
 
@@ -680,43 +697,42 @@ parseStatement: true, parseSourceElement: true */
             // '=' (U+003D) marks an assignment or comparison operator.
             if (code2 === 0x3D) {
                 switch (code) {
-                case 0x25:  // %
-                case 0x23:  // #
-                case 0x26:  // &
-                case 0x2A:  // *:
-                case 0x2B:  // +
-                case 0x2D:  // -
-                case 0x2F:  // /
-                case 0x3C:  // <
-                case 0x3E:  // >
-                case 0x5E:  // ^
-                case 0x7C:  // |
-                    index += 2;
-                    return {
-                        type: Token.Punctuator,
-                        value: String.fromCharCode(code) + String.fromCharCode(code2),
-                        lineNumber: lineNumber,
-                        lineStart: lineStart,
-                        range: [start, index]
-                    };
+                    case 0x25:  // %
+                    case 0x26:  // &
+                    case 0x2A:  // *:
+                    case 0x2B:  // +
+                    case 0x2D:  // -
+                    case 0x2F:  // /
+                    case 0x3C:  // <
+                    case 0x3E:  // >
+                    case 0x5E:  // ^
+                    case 0x7C:  // |
+                        index += 2;
+                        return {
+                            type: Token.Punctuator,
+                            value: String.fromCharCode(code) + String.fromCharCode(code2),
+                            lineNumber: lineNumber,
+                            lineStart: lineStart,
+                            range: [start, index]
+                        };
 
-                case 0x21: // !
-                case 0x3D: // =
-                    index += 2;
+                    case 0x21: // !
+                    case 0x3D: // =
+                        index += 2;
 
-                    // !== and ===
-                    if (source.charCodeAt(index) === 0x3D) {
-                        ++index;
-                    }
-                    return {
-                        type: Token.Punctuator,
-                        value: source.slice(start, index),
-                        lineNumber: lineNumber,
-                        lineStart: lineStart,
-                        range: [start, index]
-                    };
-                default:
-                    break;
+                        // !== and ===
+                        if (source.charCodeAt(index) === 0x3D) {
+                            ++index;
+                        }
+                        return {
+                            type: Token.Punctuator,
+                            value: source.slice(start, index),
+                            lineNumber: lineNumber,
+                            lineStart: lineStart,
+                            range: [start, index]
+                        };
+                    default:
+                        break;
                 }
             }
             break;
@@ -791,7 +807,7 @@ parseStatement: true, parseSourceElement: true */
             };
         }
 
-        if ('<>=!+-*#%&|^/'.indexOf(ch1) >= 0) {
+        if (JohnnysProps.operators.indexOf(ch1) >= 0) {
             ++index;
             return {
                 type: Token.Punctuator,
@@ -2436,13 +2452,16 @@ parseStatement: true, parseSourceElement: true */
 
         case '*':
         case '/':
-        case '#':
         case '%':
             prec = 11;
             break;
 
         default:
             break;
+        }
+
+        if (JohnnysProps.custom.indexOf(token.value) !== -1) {
+            prec = 11;
         }
 
         return prec;
@@ -3816,12 +3835,16 @@ parseStatement: true, parseSourceElement: true */
         return program;
     }
 
+
+
     // Sync with *.json manifests.
     exports.version = '1.1.0-dev';
 
     exports.tokenize = tokenize;
 
     exports.parse = parse;
+    exports.FnExprTokens = FnExprTokens;
+    exports.JohnnysProps = JohnnysProps;
 
     // Deep copy.
     exports.Syntax = (function () {

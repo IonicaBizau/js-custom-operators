@@ -3,7 +3,7 @@ CodeMirror.commands.autocomplete = function(cm) {
 };
 
 $("textarea").each(function () {
-    
+
     this.CodeMirror = CodeMirror.fromTextArea(this, {
         lineNumbers: true,
         matchBrackets: true,
@@ -42,12 +42,32 @@ console.log = function () {
 };
 
 function runCode () {
+
     // eval operators
     try {
         eval ($definedOperators[0].CodeMirror.getValue());
     } catch (e) {
         return $output.val(e.toString());
     }
+
+    // support new operators
+    var tokens = esprima.FnExprTokens
+      , customOperators = Object.keys(operators);
+
+    for (var i = 0; i < customOperators.length; ++i) {
+        var cOp = customOperators[i];
+        if (tokens.indexOf(cOp) === -1) {
+            tokens.push(cOp);
+        }
+        if (esprima.JohnnysProps.operators.indexOf(cOp) === -1) {
+            esprima.JohnnysProps.operators.push(cOp);
+        }
+
+        if (esprima.JohnnysProps.custom.indexOf(cOp) === -1) {
+            esprima.JohnnysProps.custom.push(cOp);
+        }
+    }
+
 
     var result;
     // eval js code
