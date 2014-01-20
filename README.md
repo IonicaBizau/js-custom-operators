@@ -17,6 +17,20 @@ This defines `∘` law. For any real numbers *x* and *y*, *x ∘ y* is *x + 2y*.
 
 This projects finally bring this feature in the JavaScript world! :-) Using [**esprima**](http://esprima.org/) - which takes JS code and generates the syntax tree for it - and [**escodegen**](https://github.com/Constellation/escodegen) - which does the other direction, generating JS code from the syntax tree esprima spits - we can create new JavaScript operators.
 
+## Example
+Having two arrays:
+
+```js
+var x = [1, 2, 3, 4, 5]
+  , y = [3, 5, 6, 1];
+```
+
+we want to find the intersection of them (that is `[1, 3, 5]`).
+
+We can easily create a function `function foo (x, y) { ... }`, but why not create an operator instead?
+
+Then `x ⋂ y` will return the same thing. :-)
+
 ## Live demo
 You can try this application online [clicking here](http://ionicabizau.github.io/JavaScript-custom-operators/).
 
