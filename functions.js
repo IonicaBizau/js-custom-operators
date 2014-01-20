@@ -2,10 +2,9 @@ CodeMirror.commands.autocomplete = function(cm) {
     CodeMirror.showHint(cm, CodeMirror.hint.js);
 };
 
-
 $("textarea").each(function () {
     
-    CodeMirror.fromTextArea(this, {
+    this.CodeMirror = CodeMirror.fromTextArea(this, {
         lineNumbers: true,
         matchBrackets: true,
         continueComments: "Enter",
@@ -26,19 +25,20 @@ var $definedOperators = $(".defined-operators")
 function runCode () {
     // eval operators
     try {
-        eval ($definedOperators.val());
+        eval ($definedOperators[0].CodeMirror.getValue());
     } catch (e) {
         return $output.val(e.toString());
     }
 
+    var result;
     // eval js code
     try {
-        var result = eval (evalThis($jsCodeToRun.val()));
+        result = eval (evalThis($jsCodeToRun[0].CodeMirror.getValue()));
     } catch (e) {
-        return $output.val(e.toString());
+        result = e.toString()
     }
 
-    $output.val(result);
+    $output[0].CodeMirror.setValue((result || "No code to run").toString());
 }
 
 $runButton.on("click", runCode);
