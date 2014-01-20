@@ -65,10 +65,15 @@
             button:hover {
                 background: #F3F3F3;
             }
+
+            a {
+                color: #4183c4;
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
-        <h1>Define your custom JavaScript operators</h1>
+        <h1>Define your custom JavaScript operators - Star on <a href="https://github.com/IonicaBizau/JavaScript-custom-operators">Github</a></h1>
         <h2>Define your operators</h2>
         <textarea class="defined-operators" data-highlight="js">
 /*
@@ -85,6 +90,9 @@
 operators = {
     "⋂": {
         name: "Intersection",
+    },
+    "★": {
+        name: "Star",
     }
 };
 
@@ -96,7 +104,14 @@ Intersection = function (x, y) {
         }
     }
     return c;
-};</textarea>
+};
+
+Star = function (x, y) {
+    if (typeof x !== "string" || typeof y !== "string")
+        throw new Error("Arguments must be strings.");
+    return x + y;
+};
+</textarea>
         
         <h2>Run your JavaScript code containing your operators</h2>
         <textarea class="js-code" data-highlight="none">
@@ -108,7 +123,12 @@ Intersection = function (x, y) {
  * See the example below.
  * */
 
-[1, 2, 3, 4] ⋂ [3, 4, 5]</textarea>
+var x = [1, 2, 3, 4, 5]
+  , y = [3, 5, 6, 1];
+
+console.log("Having two arrays: x = " + JSON.stringify(x) +
+            " and y = " + JSON.stringify(y) + " x ⋂ y will be " + JSON.stringify(x ⋂ y));
+console.log("If" ★ " you" ★ " like" ★ " this," ★ " STAR" ★ " this" ★ " on" ★ " Github" ★ " now! ;-)");</textarea>
 
         <button class="run">Run</button>
         
