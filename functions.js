@@ -1,14 +1,27 @@
-function operator_sharp (x, y) {
-    return x + 2 * y;
+var $definedOperators = $(".defined-operators")
+  , $jsCodeToRun      = $(".js-code")
+  , $runButton        = $(".run")
+  , $output           = $(".output");
+
+function runCode () {
+    // eval operators
+    try {
+        eval ($definedOperators.val());
+    } catch (e) {
+        return $output.val(e.toString());
+    }
+
+    // eval js code
+    try {
+        var result = eval (evalThis($jsCodeToRun.val()));
+    } catch (e) {
+        return $output.val(e.toString());
+    }
+
+    $output.val(result);
 }
 
-var operators = {
-    available: ["#"],
-    "#": {
-        name: "operator_sharp",
-    }
-};
-
+$runButton.on("click", runCode);
 
 function visitor(tree,visit){
     for(i in tree){
