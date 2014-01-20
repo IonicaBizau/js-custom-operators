@@ -22,6 +22,25 @@ var $definedOperators = $(".defined-operators")
   , $runButton        = $(".run")
   , $output           = $(".output");
 
+/*
+ *  This overrides the console.log function
+ *
+ * */
+console.log = function () {
+    var outputLine = "\n[log] ";
+    for (var arg in arguments) {
+        var cArg = arguments[arg];
+        if (!cArg || typeof cArg === "number") {
+            outputLine += cArg;
+        } else {
+            outputLine += JSON.stringify(cArg);
+        }
+        outputLine += " ";
+    }
+    var c = $output[0].CodeMirror;
+    c.setValue(c.getValue() + outputLine);
+};
+
 function runCode () {
     // eval operators
     try {
@@ -38,7 +57,7 @@ function runCode () {
         result = e.toString()
     }
 
-    $output[0].CodeMirror.setValue((result || "No code to run").toString());
+    console.log(result || "");
 }
 
 $runButton.on("click", runCode);
