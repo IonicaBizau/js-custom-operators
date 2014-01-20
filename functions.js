@@ -1,4 +1,20 @@
-var $definedOperators = $(".defined-operators")
+CodeMirror.commands.autocomplete = function(cm) {
+    CodeMirror.showHint(cm, CodeMirror.hint.js);
+};
+
+
+var editor = CodeMirror.fromTextArea($("textarea")[0], {
+        lineNumbers: true,
+        matchBrackets: true,
+        continueComments: "Enter",
+        autoCloseBrackets: true,
+        extraKeys: {
+            "Ctrl-Q": "toggleComment",
+            "Ctrl-Space": "autocomplete"
+        }
+    })
+
+  , $definedOperators = $(".defined-operators")
   , $jsCodeToRun      = $(".js-code")
   , $runButton        = $(".run")
   , $output           = $(".output");
