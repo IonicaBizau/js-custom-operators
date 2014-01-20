@@ -3,7 +3,9 @@ CodeMirror.commands.autocomplete = function(cm) {
 };
 
 
-var editor = CodeMirror.fromTextArea($("textarea")[0], {
+$("textarea").each(function () {
+    
+    CodeMirror.fromTextArea(this, {
         lineNumbers: true,
         matchBrackets: true,
         continueComments: "Enter",
@@ -12,9 +14,11 @@ var editor = CodeMirror.fromTextArea($("textarea")[0], {
             "Ctrl-Q": "toggleComment",
             "Ctrl-Space": "autocomplete"
         }
-    })
+    });
+})
 
-  , $definedOperators = $(".defined-operators")
+
+var $definedOperators = $(".defined-operators")
   , $jsCodeToRun      = $(".js-code")
   , $runButton        = $(".run")
   , $output           = $(".output");
