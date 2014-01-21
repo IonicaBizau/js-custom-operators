@@ -72,7 +72,7 @@ function runCode () {
     var result;
     // eval js code
     try {
-        result = eval (evalThis($jsCodeToRun[0].CodeMirror.getValue()));
+        result = evalThis($jsCodeToRun[0].CodeMirror.getValue());
     } catch (e) {
         result = e.toString()
     }
