@@ -1,0 +1,49 @@
+body {
+    font-family: "Open Sans", cursive, sans-serif;
+    padding: 20px;
+}
+textarea {
+    font-family: monospace;
+    width: 100%;
+}
+
+.CodeMirror.cm-s-default.CodeMirror-focused {
+    box-shadow: 0 0 20px rgb(146, 146, 146);
+}
+.CodeMirror.cm-s-default {
+    box-shadow: 0 0 5px rgb(146, 146, 146);
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: lighter;
+}
+
+h2 {
+    font-size: 21px;
+}
+
+button {
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    display: inline-block;
+    line-height: 28px;
+    padding: 0 50px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 10px;
+    cursor: pointer;
+    outline: 0;
+}
+
+button:hover {
+    background: #F3F3F3;
+}
+
+a {
+    color: #4183c4;
+    text-decoration: none;
+}

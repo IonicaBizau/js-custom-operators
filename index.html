@@ -2,15 +2,15 @@
 <html>
     <head>
         <title>Define your custom JavaScript operators</title>
+        <meta charset="UTF-8">
         <script src="./js/jquery.min.js" ></script>
         <script src="./js/esprima.js" ></script>
         <script src="./js/escodegen.browser.js"></script>
         
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <meta charset="UTF-8">
-
         <link rel="stylesheet" href="./code-mirror/codemirror.css">
         <link rel="stylesheet" href="./code-mirror/addon/hint/show-hint.css">
+        <link rel="stylesheet" href="css/style.css">
 
         <script src="./code-mirror/codemirror.js"></script>
         <script src="./code-mirror/addon/hint/show-hint.js"></script>
@@ -20,57 +20,6 @@
         <script src="./code-mirror/addon/comment/comment.js"></script>
         <script src="./code-mirror/mode/javascript/javascript.js"></script>
 
-        <style>
-            body {
-                font-family: "Open Sans", cursive, sans-serif;
-                padding: 20px;
-            }
-            textarea {
-                font-family: monospace;
-                width: 100%;
-            }
-
-            .CodeMirror.cm-s-default.CodeMirror-focused {
-                box-shadow: 0 0 20px rgb(146, 146, 146);
-            }
-            .CodeMirror.cm-s-default {
-                box-shadow: 0 0 5px rgb(146, 146, 146);
-                transition: all .2s linear;
-                -webkit-transition: all .2s linear;
-                -moz-transition: all .2s linear;
-                -o-transition: all .2s linear;
-            }
-
-            h1, h2, h3, h4, h5, h6 {
-                font-weight: lighter;
-            }
-
-            h2 {
-                font-size: 21px;
-            }
-
-            button {
-                background: #f8f8f8;
-                border: 1px solid #c6c6c6;
-                display: inline-block;
-                line-height: 28px;
-                padding: 0 50px;
-                -webkit-border-radius: 2px;
-                border-radius: 2px;
-                margin-top: 10px;
-                cursor: pointer;
-                outline: 0;
-            }
-
-            button:hover {
-                background: #F3F3F3;
-            }
-
-            a {
-                color: #4183c4;
-                text-decoration: none;
-            }
-        </style>
     </head>
     <body>
         <h1>Define your custom JavaScript operators - Star on <a href="https://github.com/IonicaBizau/JavaScript-custom-operators">Github</a></h1>
