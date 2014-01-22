@@ -37,28 +37,20 @@
  * Below you have an example about how to create `⋂` operator.
  * */
 operators = {
-    "⋂": {
-        name: "Intersection",
-    },
-    "★": {
-        name: "Star",
-    }
-};
-
-Intersection = function (x, y) {
-    var c = [];
-    for (var i in x) {
-        if (y.indexOf(x[i]) !== -1) {
-            c.push(x[i]);
+    "⋂": function (x, y) {
+        var c = [];
+        for (var i in x) {
+            if (y.indexOf(x[i]) !== -1) {
+                c.push(x[i]);
+            }
         }
+        return c;
+    },
+    "★": function (x, y) {
+        if (typeof x !== "string" || typeof y !== "string")
+            throw new Error("Arguments must be strings.");
+        return x + y;
     }
-    return c;
-};
-
-Star = function (x, y) {
-    if (typeof x !== "string" || typeof y !== "string")
-        throw new Error("Arguments must be strings.");
-    return x + y;
 };
 </textarea>
         

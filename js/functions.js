@@ -50,6 +50,15 @@ function runCode () {
         return $output.val(e.toString());
     }
 
+    // processing operator functions
+    for (var op in operators) {
+        var fooName = Math.random().toString(36).substring(4).toUpperCase();
+        window[fooName] = operators[op];
+        operators[op] = {
+            name: fooName
+        };
+    }
+
     // support new operators
     var tokens = esprima.FnExprTokens
       , customOperators = Object.keys(operators);
