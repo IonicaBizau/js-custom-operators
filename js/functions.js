@@ -52,7 +52,7 @@ function runCode () {
 
     // processing operator functions
     for (var op in operators) {
-        var fooName = Math.random().toString(36).substring(4).toUpperCase();
+        var fooName = "_operator_" + Math.random().toString(36).substring(4).toUpperCase();
         window[fooName] = operators[op];
         operators[op] = {
             name: fooName
