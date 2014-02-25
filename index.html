@@ -6,7 +6,7 @@
         <script src="./js/jquery.min.js" ></script>
         <script src="./js/esprima.js" ></script>
         <script src="./js/escodegen.browser.js"></script>
-        
+
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./code-mirror/codemirror.css">
         <link rel="stylesheet" href="./code-mirror/addon/hint/show-hint.css">
@@ -22,7 +22,12 @@
 
     </head>
     <body>
-        <h1>Define your custom JavaScript operators - See the project on <a href="https://github.com/IonicaBizau/JavaScript-custom-operators">GitHub</a></h1>
+        <h1>
+            Define your custom JavaScript operators - See the project on
+            <a href="https://github.com/IonicaBizau/JavaScript-custom-operators">
+                <strong>GitHub</strong>
+            </a>
+        </h1>
         <h2>Define your operators</h2>
         <textarea class="defined-operators" data-highlight="js">
 /*
@@ -33,7 +38,7 @@
  * value  must  be  an  object  containing  `name`  key  that
  * indicates  what  function  is  called.  Then  declare your
  * function  indicated in `name` key.
- * 
+ *
  * Below you have an example about how to create `⋂` operator.
  * */
 operators = {
@@ -53,13 +58,13 @@ operators = {
     }
 };
 </textarea>
-        
+
         <h2>Run your JavaScript code containing your operators</h2>
         <textarea class="js-code" data-highlight="none">
 /*
  * This is basically a JavaScript code that will return a value
  * when it will be run.
- * 
+ *
  * You can use the operators created by you.
  * See the example below.
  * */
@@ -72,13 +77,13 @@ console.log("Having two arrays: x = " + JSON.stringify(x) +
 console.log("If" ★ " you" ★ " like" ★ " this," ★ " STAR" ★ " this" ★ " on" ★ " Github" ★ " now! ;-)");</textarea>
 
         <button class="run">Run</button>
-        
+
         <h2>Output</h2>
         <textarea class="output">
 /*
  * Press the RUN button and you will see here the output.
  * */
 </textarea>
-        
+
     <script src="./js/functions.js"></script>
 </body>
