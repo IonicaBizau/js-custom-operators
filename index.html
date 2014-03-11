@@ -6,84 +6,17 @@
         <script src="./js/jquery.min.js" ></script>
         <script src="./js/esprima.js" ></script>
         <script src="./js/escodegen.browser.js"></script>
-
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./code-mirror/codemirror.css">
-        <link rel="stylesheet" href="./code-mirror/addon/hint/show-hint.css">
-        <link rel="stylesheet" href="css/style.css">
-
-        <script src="./code-mirror/codemirror.js"></script>
-        <script src="./code-mirror/addon/hint/show-hint.js"></script>
-        <script src="./code-mirror/addon/hint/javascript-hint.js"></script>
-        <script src="./code-mirror/addon/edit/matchbrackets.js"></script>
-        <script src="./code-mirror/addon/comment/continuecomment.js"></script>
-        <script src="./code-mirror/addon/comment/comment.js"></script>
-        <script src="./code-mirror/mode/javascript/javascript.js"></script>
-
+        <script src="./lib/custom-operators.js"></script>
+        <script>
+            debugger;
+            JsCustomOperators.addOperators({
+    "#": function (a, b) {
+        return a + b;
+    }
+});
+        </script>
     </head>
     <body>
-        <h1>
-            Define your custom JavaScript operators - See the project on
-            <a href="https://github.com/IonicaBizau/JavaScript-custom-operators">
-                <strong>GitHub</strong>
-            </a>
-        </h1>
-        <h2>Define your operators</h2>
-        <textarea class="defined-operators" data-highlight="js">
-/*
- * How to add a new operator?
- * ----------------------------------------------------------
- * Choose a  character that can be  converted  in an operator
- * (e.g. '⋂') add it as key in `operators` object below.  The
- * value  must  be  an  object  containing  `name`  key  that
- * indicates  what  function  is  called.  Then  declare your
- * function  indicated in `name` key.
- *
- * Below you have an example about how to create `⋂` operator.
- * */
-operators = {
-    "⋂": function (x, y) {
-        var c = [];
-        for (var i in x) {
-            if (y.indexOf(x[i]) !== -1) {
-                c.push(x[i]);
-            }
-        }
-        return c;
-    },
-    "★": function (x, y) {
-        if (typeof x !== "string" || typeof y !== "string")
-            throw new Error("Arguments must be strings.");
-        return x + y;
-    }
-};
-</textarea>
 
-        <h2>Run your JavaScript code containing your operators</h2>
-        <textarea class="js-code" data-highlight="none">
-/*
- * This is basically a JavaScript code that will return a value
- * when it will be run.
- *
- * You can use the operators created by you.
- * See the example below.
- * */
-
-var x = [1, 2, 3, 4, 5]
-  , y = [3, 5, 6, 1];
-
-console.log("Having two arrays: x = " + JSON.stringify(x) +
-            " and y = " + JSON.stringify(y) + " x ⋂ y will be " + JSON.stringify(x ⋂ y));
-console.log("If" ★ " you" ★ " like" ★ " this," ★ " STAR" ★ " this" ★ " on" ★ " Github" ★ " now! ;-)");</textarea>
-
-        <button class="run">Run</button>
-
-        <h2>Output</h2>
-        <textarea class="output">
-/*
- * Press the RUN button and you will see here the output.
- * */
-</textarea>
-
-    <script src="./js/functions.js"></script>
-</body>
+    </body>
+</html>
