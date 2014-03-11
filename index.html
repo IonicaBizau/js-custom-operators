@@ -8,12 +8,14 @@
         <script src="./js/escodegen.browser.js"></script>
         <script src="./lib/custom-operators.js"></script>
         <script>
-            debugger;
             JsCustomOperators.addOperators({
-    "#": function (a, b) {
-        return a + b;
-    }
-});
+                "#": function (a, b) {
+                    return a + b;
+                }
+            });
+        </script>
+        <script>
+            console.log(1 # 10); // outputs `11`
         </script>
     </head>
     <body>
