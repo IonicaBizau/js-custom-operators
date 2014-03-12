@@ -1,0 +1,588 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <silent> <Plug>(neocomplcache_start_omni_complete) 
+inoremap <silent> <Plug>(neocomplcache_start_auto_complete_no_select) 
+inoremap <silent> <Plug>(neocomplcache_start_auto_complete) =neocomplcache#mappings#popup_post()
+inoremap <silent> <expr> <Plug>(neocomplcache_start_unite_quick_match) unite#sources#neocomplcache#start_quick_match()
+inoremap <silent> <expr> <Plug>(neocomplcache_start_unite_complete) unite#sources#neocomplcache#start_complete()
+imap <S-Tab> <Plug>snipMateBack
+inoremap <silent> <Plug>snipMateShow =snipMate#ShowAvailableSnips()
+inoremap <silent> <Plug>snipMateBack =snipMate#BackwardsSnippet()
+inoremap <silent> <Plug>snipMateTrigger =snipMate#TriggerSnippet(1)
+inoremap <silent> <Plug>snipMateNextOrTrigger =snipMate#TriggerSnippet()
+inoremap <silent> <expr> <Plug>(neosnippet_start_unite_snippet) unite#sources#neosnippet#start_complete()
+inoremap <silent> <expr> <Plug>(neosnippet_jump) neosnippet#mappings#jump_impl()
+inoremap <silent> <expr> <Plug>(neosnippet_expand) neosnippet#mappings#expand_impl()
+inoremap <silent> <expr> <Plug>(neosnippet_jump_or_expand) neosnippet#mappings#jump_or_expand_impl()
+inoremap <silent> <expr> <Plug>(neosnippet_expand_or_jump) neosnippet#mappings#expand_or_jump_impl()
+inoremap <Plug>(emmet-anchorize-summary) =emmet#util#closePopup()=emmet#anchorizeURL(1)<Right>
+inoremap <Plug>(emmet-anchorize-url) =emmet#util#closePopup()=emmet#anchorizeURL(0)<Right>
+inoremap <Plug>(emmet-remove-tag) =emmet#util#closePopup()=emmet#removeTag()<Right>
+inoremap <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
+inoremap <Plug>(emmet-toogle-comment) =emmet#util#closePopup()=emmet#toggleComment()<Right>
+inoremap <Plug>(emmet-image-size) =emmet#util#closePopup()=emmet#imageSize()<Right>
+inoremap <Plug>(emmet-move-prev) :call emmet#moveNextPrev(1)
+inoremap <Plug>(emmet-move-next) :call emmet#moveNextPrev(0)
+inoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
+inoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
+inoremap <Plug>(emmet-expand-word) =emmet#util#closePopup()=emmet#expandAbbr(1,"")<Right>
+inoremap <Plug>(emmmet-expand-abbr) =emmet#util#closePopup()=emmet#expandAbbr(0,"")<Right>
+inoremap <silent> <Down> gja
+inoremap <silent> <Up> gka
+snoremap  a<BS>
+xmap 	 <Plug>snipMateVisual
+smap 	 <Plug>snipMateNextOrTrigger
+snoremap  a<BS>
+nnoremap <silent>  :tabnew
+xmap c <Plug>(emmet-code-pretty)
+xmap m <Plug>(emmet-merge-lines)
+nmap A <Plug>(emmet-anchorize-summary)
+nmap a <Plug>(emmet-anchorize-url)
+nmap k <Plug>(emmet-remove-tag)
+nmap j <Plug>(emmet-split-join-tag)
+nmap / <Plug>(emmet-toogle-comment)
+nmap i <Plug>(emmet-image-size)
+nmap N <Plug>(emmet-move-prev)
+nmap n <Plug>(emmet-move-next)
+xmap D <Plug>(emmet-balance-tag-outword)
+nmap D <Plug>(emmet-balance-tag-outword)
+xmap d <Plug>(emmet-balance-tag-inward)
+nmap d <Plug>(emmet-balance-tag-inward)
+nmap ; <Plug>(emmet-expand-word)
+xmap , <Plug>(emmmet-expand-abbr)
+nmap , <Plug>(emmmet-expand-abbr)
+nnoremap   za
+nnoremap : ;
+nnoremap ; :
+inoremap <expr> » pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>\<c-n>\<c-p>\<c-r>=pumvisible() ? \"\\<down>\" : \"\"\<cr>"
+nnoremap JJJJ <Nop>
+nmap N Nzz
+xmap N Nzz
+omap N Nzz
+nnoremap \par :%s/^>$//
+nnoremap <silent> \gv :tabnew:e ~/.gvimrc
+nnoremap <silent> \ev :tabnew:e ~/.vimrc
+nnoremap <silent> \todo :execute TodoListMode()
+nnoremap <silent> \pal :Project .vimproject
+nmap \w :call Browser ()
+xmap \w :call Browser ()
+omap \w :call Browser ()
+nmap gx <Plug>NetrwBrowseX
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nmap n nzz
+xmap n nzz
+omap n nzz
+nnoremap <silent> zk O
+nnoremap <silent> zj o
+snoremap <Del> a<BS>
+snoremap <BS> a<BS>
+smap <S-Tab> <Plug>snipMateBack
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+snoremap <silent> <Plug>snipMateBack a=snipMate#BackwardsSnippet()
+snoremap <silent> <Plug>snipMateNextOrTrigger a=snipMate#TriggerSnippet()
+nnoremap <silent> <F11> :call conque_term#exec_file()
+xnoremap <silent> <Plug>(neosnippet_register_oneshot_snippet) :call neosnippet#mappings#_register_oneshot_snippet()
+xnoremap <silent> <expr> <Plug>(neosnippet_start_unite_snippet_target) unite#sources#neosnippet_target#start()
+xnoremap <silent> <Plug>(neosnippet_expand_target) :call neosnippet#mappings#_expand_target()
+xnoremap <silent> <Plug>(neosnippet_get_selected_text) :call neosnippet#helpers#get_selected_text(visualmode(), 1)
+snoremap <silent> <expr> <Plug>(neosnippet_jump) neosnippet#mappings#jump_impl()
+snoremap <silent> <expr> <Plug>(neosnippet_expand) neosnippet#mappings#expand_impl()
+snoremap <silent> <expr> <Plug>(neosnippet_jump_or_expand) neosnippet#mappings#jump_or_expand_impl()
+snoremap <silent> <expr> <Plug>(neosnippet_expand_or_jump) neosnippet#mappings#expand_or_jump_impl()
+xnoremap <Plug>(emmet-code-pretty) :call emmet#codePretty()
+xnoremap <Plug>(emmet-merge-lines) :call emmet#mergeLines()
+nnoremap <Plug>(emmet-anchorize-summary) :call emmet#anchorizeURL(1)
+nnoremap <Plug>(emmet-anchorize-url) :call emmet#anchorizeURL(0)
+nnoremap <Plug>(emmet-remove-tag) :call emmet#removeTag()
+nnoremap <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
+nnoremap <Plug>(emmet-toogle-comment) :call emmet#toggleComment()
+nnoremap <Plug>(emmet-image-size) :call emmet#imageSize()
+nnoremap <Plug>(emmet-move-prev) :call emmet#moveNextPrev(1)
+nnoremap <Plug>(emmet-move-next) :call emmet#moveNextPrev(0)
+xnoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-2)
+nnoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
+xnoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(2)
+nnoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
+nnoremap <Plug>(emmet-expand-word) :call emmet#expandAbbr(1,"")
+xnoremap <Plug>(emmmet-expand-abbr) :call emmet#expandAbbr(2,"")
+nnoremap <Plug>(emmmet-expand-abbr) :call emmet#expandAbbr(3,"")
+nnoremap <silent> <End> a r
+nnoremap <silent> <Home> i r
+nnoremap <silent> <F10> :call Paste_on_off()
+nnoremap <silent> <F9> :%s/$//g:%s// /g
+nnoremap <silent> <F8> :execute RotateColorTheme()
+nnoremap <silent> <C-Left> :tabprevious
+nnoremap <silent> <C-Right> :tabnext
+nnoremap <silent> <F3> :Tlist
+nnoremap <silent> <F2> :Project
+imap 	 <Plug>snipMateNextOrTrigger
+inoremap <expr>  pumvisible() ? "\" : "\u\"
+inoremap <expr>  pumvisible() ? "\<c-n>" : "\<c-n>\<c-r>=pumvisible() ? \"\\<down>\" : \"\"\<cr>"
+imap 	 <Plug>snipMateShow
+imap A <Plug>(emmet-anchorize-summary)
+imap a <Plug>(emmet-anchorize-url)
+imap k <Plug>(emmet-remove-tag)
+imap j <Plug>(emmet-split-join-tag)
+imap / <Plug>(emmet-toogle-comment)
+imap i <Plug>(emmet-image-size)
+imap N <Plug>(emmet-move-prev)
+imap n <Plug>(emmet-move-next)
+imap D <Plug>(emmet-balance-tag-outword)
+imap d <Plug>(emmet-balance-tag-inward)
+imap ; <Plug>(emmet-expand-word)
+imap , <Plug>(emmmet-expand-abbr)
+inoremap jj 
+let &cpo=s:cpo_save
+unlet s:cpo_save
+set autoindent
+set backspace=2
+set completefunc=neocomplcache#complete#manual_complete
+set completeopt=menuone,preview
+set expandtab
+set fileencodings=ucs-bom,utf-8,default,latin1
+set grepprg=grep\ -nH\ $*
+set helplang=en
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set mouse=a
+set pastetoggle=<F10>
+set printoptions=paper:a4
+set ruler
+set runtimepath=~/.vim/bundle/vundle,~/.vim/bundle/emmet-vim,~/.vim/bundle/nerdtree,~/.vim/bundle/neocomplcache.vim,~/.vim/bundle/neosnippet.vim,~/.vim/bundle/neosnippet-snippets,~/.vim/bundle/Conque-Shell,~/.vim/bundle/vim-addon-mw-utils,~/.vim/bundle/tlib_vim,~/.vim/bundle/vim-snipmate,~/.vim/bundle/vim-snippets,~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after,~/.vim/bundle/vundle/,~/.vim/bundle/vundle/after,~/.vim/bundle/emmet-vim/after,~/.vim/bundle/nerdtree/after,~/.vim/bundle/neocomplcache.vim/after,~/.vim/bundle/neosnippet.vim/after,~/.vim/bundle/neosnippet-snippets/after,~/.vim/bundle/Conque-Shell/after,~/.vim/bundle/vim-addon-mw-utils/after,~/.vim/bundle/tlib_vim/after,~/.vim/bundle/vim-snipmate/after,~/.vim/bundle/vim-snippets/after
+set shiftwidth=4
+set showcmd
+set smartcase
+set smarttab
+set softtabstop=4
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set wildmenu
+set wildmode=list:longest,full
+set window=38
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/Documents/JavaScript-custom-operators
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +8 index.html
+badd +1 css/style.css
+badd +10 LICENSE
+badd +3 lib/custom-operators.js
+badd +4 README.md
+args index.html
+edit lib/custom-operators.js
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 75) / 150)
+exe '2resize ' . ((&lines * 19 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 118 + 75) / 150)
+exe '3resize ' . ((&lines * 17 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 118 + 75) / 150)
+argglobal
+enew
+file NERD_tree_2
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> <silent> <NL> :call nerdtree#invokeKeyMap("<C-j>")
+nnoremap <buffer> <silent>  :call nerdtree#invokeKeyMap("<C-k>")
+nnoremap <buffer> <silent>  :call nerdtree#invokeKeyMap('o')
+nnoremap <buffer> <silent> ? :call nerdtree#invokeKeyMap("?")
+nnoremap <buffer> <silent> A :call nerdtree#invokeKeyMap("A")
+nnoremap <buffer> <silent> B :call nerdtree#invokeKeyMap("B")
+nnoremap <buffer> <silent> CD :call nerdtree#invokeKeyMap("CD")
+nnoremap <buffer> <silent> C :call nerdtree#invokeKeyMap("C")
+nnoremap <buffer> <silent> D :call nerdtree#invokeKeyMap("D")
+nnoremap <buffer> <silent> F :call nerdtree#invokeKeyMap("F")
+nnoremap <buffer> <silent> I :call nerdtree#invokeKeyMap("I")
+nnoremap <buffer> <silent> J :call nerdtree#invokeKeyMap("J")
+nnoremap <buffer> <silent> K :call nerdtree#invokeKeyMap("K")
+nnoremap <buffer> <silent> O :call nerdtree#invokeKeyMap("O")
+nnoremap <buffer> <silent> P :call nerdtree#invokeKeyMap("P")
+nnoremap <buffer> <silent> R :call nerdtree#invokeKeyMap("R")
+nnoremap <buffer> <silent> T :call nerdtree#invokeKeyMap("T")
+nnoremap <buffer> <silent> U :call nerdtree#invokeKeyMap("U")
+nnoremap <buffer> <silent> X :call nerdtree#invokeKeyMap("X")
+nnoremap <buffer> <silent> cd :call nerdtree#invokeKeyMap("cd")
+nnoremap <buffer> <silent> e :call nerdtree#invokeKeyMap("e")
+nnoremap <buffer> <silent> f :call nerdtree#invokeKeyMap("f")
+nnoremap <buffer> <silent> gi :call nerdtree#invokeKeyMap("gi")
+nnoremap <buffer> <silent> gs :call nerdtree#invokeKeyMap("gs")
+nnoremap <buffer> <silent> go :call nerdtree#invokeKeyMap("go")
+nnoremap <buffer> <silent> i :call nerdtree#invokeKeyMap("i")
+nnoremap <buffer> <silent> m :call nerdtree#invokeKeyMap("m")
+nnoremap <buffer> <silent> o :call nerdtree#invokeKeyMap("o")
+nnoremap <buffer> <silent> p :call nerdtree#invokeKeyMap("p")
+nnoremap <buffer> <silent> q :call nerdtree#invokeKeyMap("q")
+nnoremap <buffer> <silent> r :call nerdtree#invokeKeyMap("r")
+nnoremap <buffer> <silent> s :call nerdtree#invokeKeyMap("s")
+nnoremap <buffer> <silent> t :call nerdtree#invokeKeyMap("t")
+nnoremap <buffer> <silent> u :call nerdtree#invokeKeyMap("u")
+nnoremap <buffer> <silent> x :call nerdtree#invokeKeyMap("x")
+nnoremap <buffer> <silent> <2-LeftMouse> :call nerdtree#invokeKeyMap("<2-LeftMouse>")
+nnoremap <buffer> <silent> <LeftRelease> <LeftRelease>:call nerdtree#invokeKeyMap("<LeftRelease>")
+nnoremap <buffer> <silent> <MiddleRelease> :call nerdtree#invokeKeyMap("<MiddleRelease>")
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=neocomplcache#complete#manual_complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'nerdtree'
+setlocal filetype=nerdtree
+endif
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=marker
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+set number
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{exists('b:NERDTreeRoot')?b:NERDTreeRoot.path.str():''}
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'nerdtree'
+setlocal syntax=nerdtree
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal winfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+wincmd w
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1,J1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=neocomplcache#complete#auto_complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'javascript'
+setlocal filetype=javascript
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=marker
+setlocal foldmethod=marker
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=javascriptcomplete#CompleteJS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'javascript'
+setlocal syntax=javascript
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 19 - ((14 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+19
+normal! 017|
+wincmd w
+argglobal
+edit index.html
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=<!--%s-->
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=neocomplcache#complete#auto_complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'html'
+setlocal filetype=html
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=marker
+setlocal foldmethod=marker
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=HtmlIndent()
+setlocal indentkeys=o,O,<Return>,<>>,{,},!^F
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'html'
+setlocal syntax=html
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 6 - ((5 * winheight(0) + 8) / 17)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6
+normal! 048|
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 75) / 150)
+exe '2resize ' . ((&lines * 19 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 118 + 75) / 150)
+exe '3resize ' . ((&lines * 17 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 118 + 75) / 150)
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
