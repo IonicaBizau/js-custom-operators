@@ -93,7 +93,7 @@ function runCode () {
 
 $runButton.on("click", runCode);
 
-function visitor(tree,visit){
+function visitor(tree,visit) {
     for(i in tree){
         visit(tree[i]);
         if(typeof tree[i] === "object" && tree[i] !== null){
@@ -105,7 +105,7 @@ function visitor(tree,visit){
 function evalThis (input) {
     var syntax = esprima.parse(input);
     visitor(syntax,function(el){
-        if(el.type === "BinaryExpression"){
+        if(el.type === "BinaryExpression") {
 
             if (Object.keys(operators).indexOf(el.operator) !== -1){
                 el.type = "CallExpression";
