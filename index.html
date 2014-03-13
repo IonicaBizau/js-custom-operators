@@ -6,7 +6,27 @@
         <script src="./js/jquery.min.js" ></script>
         <script src="./js/esprima.js" ></script>
         <script src="./js/escodegen.browser.js"></script>
+        <script src="./js/console.js"></script>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <pre class="console"></pre>
+        <script>
+            ConsoleJs.init({
+                selector: "pre.console"
+            });
+        </script>
         <script src="./lib/custom-operators.js"></script>
+        <script>
+            console.log(
+                JsCustomOperators.eval(
+                    '"Hi! I am glad to help you to create new operators.'
+                    + ' Currently only one operator is defined: #. Let\'s try it:'
+                    + ' 1 # 10 = "'
+                ),
+                JsCustomOperators.eval('1 # 10')
+            );
+        </script>
         <script>
             JsCustomOperators.addOperators({
                 "#": function (a, b) {
@@ -14,11 +34,5 @@
                 }
             });
         </script>
-        <script>
-            console.log(1 # 10); // outputs `11`
-        </script>
-    </head>
-    <body>
-
     </body>
 </html>
