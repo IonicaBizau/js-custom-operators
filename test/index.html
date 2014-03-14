@@ -18,6 +18,13 @@
                 selector: "pre.console"
             });
         </script>
+        <script>
+            JsCustomOperators.addOperators({
+                "#": function (a, b) {
+                    return a + b;
+                }
+            });
+        </script>
 
         <!-- Use custom operators -->
         <script>
@@ -27,13 +34,6 @@
                  + "1 # 10 = "
                 , 1 # 10
             );
-        </script>
-        <script>
-            JsCustomOperators.addOperators({
-                "#": function (a, b) {
-                    return a + b;
-                }
-            });
         </script>
     </body>
 </html>
