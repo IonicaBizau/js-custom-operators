@@ -40,4 +40,4 @@ You can try this application online [clicking here](http://ionicabizau.github.io
  - [**escodegen**](https://github.com/Constellation/escodegen)
 
 ## License
-See [LICENSE](https://github.com/IonicaBizau/JavaScript-custom-operators/blob/master/LICENSE) file.
+See [LICENSE](/LICENSE) file.
