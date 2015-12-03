@@ -1,6 +1,6 @@
 {
   "name": "js-custom-operators",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Create your own operators in JavaScript",
   "main": "index.js",
   "scripts": {
