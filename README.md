@@ -1,9 +1,6 @@
-JavaScript Custom Operators
-===========================
+# js-custom-operators [![Support this project][donate-now]][paypal-donations]
 
 Create your own operators in JavaScript
-
-> ![](http://i.imgur.com/15IaZnT.png)
 
 ## Introduction
 
@@ -18,11 +15,13 @@ This defines `∘` law. For any real numbers *x* and *y*, *x ∘ y* is *x + 2y*.
 This projects finally bring this feature in the JavaScript world! :-) Using [**esprima**](http://esprima.org/) - which takes JS code and generates the syntax tree for it - and [**escodegen**](https://github.com/Constellation/escodegen) - which does the other direction, generating JS code from the syntax tree esprima spits - we can create new JavaScript operators.
 
 ## Example
+
 Having two arrays:
 
 ```js
 var x = [1, 2, 3, 4, 5]
-  , y = [3, 5, 6, 1];
+  , y = [3, 5, 6, 1]
+  ;
 ```
 
 we want to find the intersection of them (that is `[1, 3, 5]`).
@@ -32,12 +31,28 @@ We can easily create a function `function foo (x, y) { ... }`, but why not creat
 Then `x ⋂ y` will return the same thing. :-)
 
 ## Live demo
+
 You can try this application online [clicking here](http://ionicabizau.github.io/JavaScript-custom-operators/).
 
-## Thanks!
+[![js-custom-operators](http://i.imgur.com/15IaZnT.png)](#)
+
+## How to contribute
+Have an idea? Found a bug? See [how to contribute][contributing].
+
+## Thanks
+
  - [@benjamingr](https://github.com/benjamingr) posted this great [answer](http://stackoverflow.com/a/20764137/1420197) to my [question on StackOverflow](http://stackoverflow.com/q/20762338/1420197)
  - [**esprima**](http://esprima.org/)
  - [**escodegen**](https://github.com/Constellation/escodegen)
 
 ## License
-See [LICENSE](/LICENSE) file.
+
+[MIT][license] © [Ionică Bizău][website]
+
+[paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVXDDLKKLQRJW
+[donate-now]: http://i.imgur.com/6cMbHOC.png
+
+[license]: http://showalicense.com/?fullname=Ionic%C4%83%20Biz%C4%83u%20%3Cbizauionica%40gmail.com%3E%20(http%3A%2F%2Fionicabizau.net)&year=2014#license-mit
+[website]: http://ionicabizau.net
+[contributing]: /CONTRIBUTING.md
+[docs]: /DOCUMENTATION.md
