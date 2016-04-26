@@ -1,3 +1,4 @@
+
 # js-custom-operators [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![Version](https://img.shields.io/npm/v/js-custom-operators.svg)](https://www.npmjs.com/package/js-custom-operators) [![Downloads](https://img.shields.io/npm/dt/js-custom-operators.svg)](https://www.npmjs.com/package/js-custom-operators) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
 
 > Create your own operators in JavaScript
@@ -34,18 +35,21 @@ Then `x ⋂ y` will return the same thing. :-)
 
 You can try this application online [clicking here](http://ionicabizau.github.io/JavaScript-custom-operators/).
 
+
 [![js-custom-operators](http://i.imgur.com/15IaZnT.png)](#)
 
-## How to contribute
+## :yum: How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
 
-## Thanks
+## :cake: Thanks
 
  - [@benjamingr](https://github.com/benjamingr) posted this great [answer](http://stackoverflow.com/a/20764137/1420197) to my [question on StackOverflow](http://stackoverflow.com/q/20762338/1420197)
  - [**esprima**](http://esprima.org/)
  - [**escodegen**](https://github.com/Constellation/escodegen)
 
-## License
+
+
+## :scroll: License
 
 [MIT][license] © [Ionică Bizău][website]
 
