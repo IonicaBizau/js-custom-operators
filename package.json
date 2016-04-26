@@ -1,8 +1,8 @@
 {
   "name": "js-custom-operators",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Create your own operators in JavaScript",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -79,5 +79,16 @@
         "[**escodegen**](https://github.com/Constellation/escodegen)"
       ]
     }
-  }
+  },
+  "files": [
+    "bin/",
+    "app/",
+    "lib/",
+    "dist/",
+    "src/",
+    "resources/",
+    "menu/",
+    "cli.js",
+    "index.js"
+  ]
 }
