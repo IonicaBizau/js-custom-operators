@@ -33,7 +33,7 @@ Then `x ⋂ y` will return the same thing. :-)
 
 ## Live demo
 
-You can try this application online [clicking here](http://ionicabizau.github.io/JavaScript-custom-operators/).
+You can try this application online [clicking here](http://ionicabizau.github.io/js-custom-operators/).
 
 
 [![js-custom-operators](http://i.imgur.com/15IaZnT.png)](#)
