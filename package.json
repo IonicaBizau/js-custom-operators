@@ -1,6 +1,6 @@
 {
   "name": "js-custom-operators",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Create your own operators in JavaScript",
   "main": "lib/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "operators",
     "js"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/IonicaBizau/js-custom-operators/issues"
@@ -84,12 +84,11 @@
     "bin/",
     "app/",
     "lib/",
-    "build/",
     "dist/",
     "src/",
+    "scripts/",
     "resources/",
     "menu/",
-    "scripts/",
     "cli.js",
     "index.js"
   ]
