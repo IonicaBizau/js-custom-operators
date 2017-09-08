@@ -1,6 +1,6 @@
 {
   "name": "js-custom-operators",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Create your own operators in JavaScript",
   "main": "lib/index.js",
   "scripts": {
@@ -90,6 +90,9 @@
     "resources/",
     "menu/",
     "cli.js",
-    "index.js"
+    "index.js",
+    "bloggify.js",
+    "bloggify.json",
+    "bloggify/"
   ]
 }
